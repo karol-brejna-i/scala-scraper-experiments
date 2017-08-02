@@ -1,0 +1,335 @@
+<html>
+  <head>
+		<title>boiteajeux.net &bull; Tzaar online</title>
+		<link rel="StyleSheet" type="text/css" href="tza.css?v=1">
+		<meta property="fb:app_id"          content="223856400979564" /> 
+    <meta property="og:site_name"            content="boiteajeux.net" />
+    <meta property="og:type"            content="game" /> 
+    <meta property="og:url"             content="http://www.boiteajeux.net/jeux/tza/partie.php?id=37683" /> 
+    <meta property="og:title"           content="Play 'Tzaar' online" /> 
+    <meta property="og:image"           content="http://www.boiteajeux.net/img/fb/tza.jpg" /> 
+    <meta property="og:description"    content="Play 'Tzaar' online for free" />
+<script type="text/javascript" src="../../includes/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="../../includes/jquery.hoverIntent.minified.js"></script>
+        <script type="text/javascript" src="../../includes/cluetip/jquery.cluetip.min.js"></script>
+        <link rel="stylesheet" href="../../includes/cluetip/jquery.cluetip.css" type="text/css">
+        <link rel="shortcut icon" type="image/x-icon" href="../../img/baj.ico" />
+        <link rel="StyleSheet" type="text/css" href="../../stats.css">
+        <link rel="StyleSheet" type="text/css" href="../../shared.css">
+        <script type="text/javascript" src="../../includes/lib_utils.js"></script><script type="text/javascript">
+        function disableHyperLink(obj, disable) {
+          var href, onclick, color;
+
+          if (disable) {
+            // Protect against multiple deactivations
+            var href_bak = obj.getAttribute("href_bak");
+            if (href_bak && href_bak != null) {
+              return;
+            }
+
+            // Deactivate the hyperlink and onclick event and
+            // save them for future reactivation
+            onclick = obj.getAttribute("onclick");
+            href = (obj.nodeName.toLowerCase() == 'a') ? obj.getAttribute("href") : null;
+
+            if (onclick && onclick != null) {
+              obj.setAttribute("onclick_bak", onclick);
+              obj.setAttribute("onclick", function() { return false; });
+            }
+
+            if (href && href != null) {
+              obj.setAttribute("href_bak", href);
+              obj.removeAttribute("href"); //(1)
+
+              // Gray the link text
+              if (navigator.appName == "Microsoft Internet Explorer") {
+                obj.disabled = true; // Non standard
+              }
+            }
+          } else {
+            // Reactivate the hyperlink and onclick event using
+            // saved link address and onclick event
+            onclick = obj.getAttribute("onclick_bak");
+            href = obj.getAttribute("href_bak");
+
+            if (onclick && onclick != null) {
+              obj.setAttribute("onclick", onclick);
+            }
+            obj.removeAttribute("onclick_bak");
+
+            if (href && href != null) {
+              obj.setAttribute("href", href);
+
+              // Ungray the link text
+              if (navigator.appName == "Microsoft Internet Explorer") {
+                obj.disabled = false; // Non standard
+              }
+            }
+            obj.removeAttribute("href_bak");
+          }
+        }
+        function antidoubleclic() {
+          $('input[type="submit"]').attr('disabled', 'disabled');
+          $('input[type="button"]').attr('disabled', 'disabled');
+          $('button').attr('disabled', 'disabled');
+
+          var disable = true;
+          var allAnchors = document.getElementsByTagName("a");
+          for (var i = 0; i < allAnchors.length; i++) {
+            disableHyperLink(allAnchors[i], disable);
+          }
+        }
+
+        function actualiserPage() {
+          if(typeof reloadBaj != "undefined") {
+            reloadBaj();
+          } else {
+            window.location.reload();
+          }
+        }
+
+        $(document).ready(function() {$('.clMiniForum').cluetip({cluetipClass: 'rounded', waitImage: false, local:false, width: '240px', cursor: 'pointer', showTitle: false});});</script><script type="text/javascript">function detailjoueur(pID) {popup('../../detailjoueur.php?id='+pID,'wiDetailJ'+pID,550,625)};</script>		<script language="javascript">
+
+      function historique() {
+        popup('historique.php?id=37683','wiHisto',530,700);
+      }
+
+      		</script>
+<script type="text/javaScript" src="../../includes/ape/APE_JSF/Clients/mootools-core.js"></script>
+<script type="text/javaScript" src="../../includes/ape/APE_JSF/Clients/MooTools.js"></script>
+<script type="text/javaScript" src="../../includes/ape/APE_JSF/config.js"></script>
+    <script type="text/javascript" src="../../includes/jquery.toastmessage.js?v=3"></script>
+<link type="text/css" href="../../includes/jquery.toastmessage.css?v=2" rel="stylesheet" />
+<script type="text/javaScript">
+	APE.ControllerPartieUpdate = new Class({
+        	Extends: APE.Client,
+        	
+		initialize: function(){
+			this.onRaw('postmsg', this.onMsg);
+			this.addEvent('load',this.start);
+		},
+        
+		start: function(core){
+			this.core.start({'name': $time().toString()});
+		},
+        
+		onMsg: function(raw){
+      if (raw.data.etat == 2) {
+  			var notifText = 'IT&#39;S YOUR TURN IN  <a href="../../jeux/'+raw.data.code+'/partie.php?id='+raw.data.id+'" color="#fff">GAME #'+raw.data.id+'</a>';
+      } else { // fin de partie
+        var notifText = '<a href="../../jeux/'+raw.data.code+'/partie.php?id='+raw.data.id+'" color="#fff">GAME #'+raw.data.id+'</a> IS OVER ! ';
+      }
+							if(raw.data.code == 'tza' && raw.data.id == 37683) {
+          if(typeof reloadBaj != 'undefined') {
+            if(!isActive) {
+              reloadBaj();
+            }
+          } else {
+											var isMiniforumActive = document.fmMiniForum.pMessage.value != '';
+						if (isMiniforumActive) {
+							var notifTextMF = '<br/>Current game has moved,you can reload the page by sending your message or clicking on following link (but you will lose your message!)<br/><a href="javascript:document.location.reload();" color="#fff">Reload</a>';
+							$().toastmessage('showToast', {
+					            text     : notifTextMF,
+					            sticky   : true,
+					            position : 'top-right',
+					            type     : 'notice',
+					            closeText: ''
+					        });
+						} else {
+							document.location.reload();
+						}
+					          }
+				} else {
+					if(raw.data.is_active == 1 || raw.data.etat == 3){
+						$().toastmessage('showToast', {
+              text : notifText,
+              sticky   : false,
+	            position : 'top-right',
+	            type     : 'jeu',
+              src      : '../../img/icojeux/'+raw.data.code+'.png',
+	            closeText: ''
+            });
+					}
+				}
+
+					}
+  });
+
+	window.addEvent('domready', function(){
+		var client = new APE.ControllerPartieUpdate();
+
+		client.load({
+			identifier: 'baj',
+			channel: '91614'
+		});
+
+	});
+</script>
+<script src="../../includes/soundmanager/script/lowLag.js"></script>
+<script src="../../includes/soundmanager/script/soundmanager2-jsmin.js"></script>
+<script>
+  $(document).ready(function() {
+    lowLag.init({'urlPrefix':'../../sound/','sm2url':'../../includes/soundmanager/swf'});
+    lowLag.load(["yourturn.mp3","yourturn.ogg"],"yourTurn");
+  });
+</script>  
+
+		<script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-303834-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); })();
+        </script>  </head>
+  <body style="text-align:center;">
+    <div style="overflow: hidden;margin-left:auto;margin-right:auto;width:1250px;">
+      <table style="border-collapse:separate;border-spacing:10px 0px">
+        <tr>
+          <td style="vertical-align:top;">
+                     		<table border="0" cellpadding="5" cellspacing="5" width="100%">
+        		  <tr>
+        		    <td style="text-align:center;">
+        		      <img src="img/logo_tza.gif" border="0">
+        		    </td>
+        		  </tr>
+         		  <tr>
+         		    <td>
+  		                         		  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tr><td style="text-align:center;" class="clTexteFort">Game #37683</td></tr>
+										                    <tr><td style="text-align:center;" class=clTexteFort>"<span style="font-size:8pt;font-style:italic;">test-random-board</span>"</td></tr>
+										                    <tr><td><br></td></tr>
+                    
+                  	<tr><td style="text-align:center;"><img style="padding:3px" alt="How to play ?" title="How to play ?" src="../../img/ico_helpg.png"><script type="text/javascript">  $(document).ready(function() {$('.clAideTip').cluetip({cluetipClass: 'rounded', waitImage: false, local:true, cursor: 'pointer', showTitle: false});$('.clAchat').cluetip({activation: 'click', cluetipClass: 'rounded', waitImage: false, local:false, width: '200px', cursor: 'pointer', showTitle: false, sticky: true, closePosition: 'top', closeText: '<img style="float:right;width:15px" src="../../img/stop.png">'});$('.clStats').cluetip({activation: 'click', cluetipClass: 'rounded', waitImage: false, local:false, width: '450px', cursor: 'pointer', showTitle: false, sticky: true, closePosition: 'top', closeText: '<img style="float:right;width:15px" src="../../img/stop.png">'});});</script><a href="../../statsjeu.php?jeu=tza&idj=55655_91614" rel="../../statsjeu.php?jeu=tza&idj=55655_91614" class="clStats"><img style="padding:3px" alt="Stats and ratings" title="Stats and ratings" src="../../img/ico_stats.png" border=0></a><a href="javascript:void(0);" onclick="historique();"><img style="padding:3px" alt="History" title="History" src="../../img/ico_histo.png" border=0></a><a href="javascript:void(0);" onclick="$('#dvNote').show();"><img id="iconote" style="padding:3px" alt="My notes" title="My notes" src="../../img/ico_note.png" border=0></a><script type="text/javascript">
+                    var lbChange = false;
+                    function maxlength_textarea(id, crid, max)
+                    {
+                      var txtarea = document.getElementById(id);
+                      document.getElementById(crid).innerHTML=max-txtarea.value.length;
+                    }
+                    
+                    function v_maxlength(id, crid, max)
+                    {
+                      lbChange = true;
+                      var txtarea = document.getElementById(id);
+                      var crreste = document.getElementById(crid);
+                      var len = txtarea.value.length;
+                      if(len>max)
+                      {
+                              txtarea.value=txtarea.value.substr(0,max);
+                      }
+                      len = txtarea.value.length;
+                      crreste.innerHTML=max-len;
+                    }
+
+                    $().ready(function() {
+                      $("#txtNote").keydown( function(){v_maxlength('txtNote','txtNoteLeft',600); });
+                      maxlength_textarea('txtNote','txtNoteLeft',600);
+                    });
+                    
+                    function sendNote() {
+                      if (!lbChange) {
+                        $('#dvNote').hide();
+                      } else {
+                        $.post("../../note.php", $("#fmNote").serialize(), function(data) {
+                          $('#dvNote').hide();
+                          if ($("#txtNote").val() == "") {
+                            $("#iconote").attr("src","../../img/ico_note.png");
+                          } else {
+                            $("#iconote").attr("src","../../img/ico_noter.png");
+                          }
+                        });
+                        lbChange = false;
+                      }
+                    }
+                </script><div id="dvNote" class="cluetip-rounded" style="background-color:#333333;color:antiquewhite;text-align:center;z-index:4000;padding:5px;position:absolute;display:none;top:100px;left:100px;filter: alpha(opacity=90);
+        -moz-opacity: 0.9;opacity: 0.9;"><form id="fmNote" name="fmNote" method="post" action="../../note.php"><div style="font-weight:bold;font-size:10pt">My notes</div><input type="hidden" name="idPartie" value="37683"><input type="hidden" name="idJeu" value="tza"><textarea id="txtNote" name="txtNote" class="clInput" cols="50" rows="15"></textarea><br><span style="font-style:italic;color:antiquewhite;font-size:7pt">There is <span id="txtNoteLeft"></span> characters left.</span><div style="float:right">
+        <a href="javascript:sendNote();"><img src="../../img/stop.png" style="border:none;width:15px"></a>
+      </div></form></div><a href="javascript:void(0);" onclick="actualiserPage();"><img id="icorefresh" style="padding:3px" alt="Refresh" title="Refresh" src="../../img/ico_refresh.png" border=0></a></td></tr><tr><td style="text-align:center;"><a href="../../index.php?p=encours"><img style="padding:3px" alt="Back to homepage" title="Back to homepage" src="../../img/ico_home.png" border=0></a><a href="javascript:void(0);" onclick="$('#dvParam').show();"><img style="padding:3px" alt="My preferences" title="My preferences" src="../../img/ico_param2.png" border=0></a><div id="dvParam" class="cluetip-rounded" style="background-color:#333333;color:antiquewhite;z-index:10;text-align:center;padding:5px;position:absolute;display:none;top:100px;width:300px;left:100px;filter: alpha(opacity=90);
+        -moz-opacity: 0.9;opacity: 0.9;"><form id="fmParam" name="fmParam" method="post" action="../../rec_premium_jeux.php"><div style="font-weight:bold;font-size:10pt">Tzaar<br>My preferences</div><input type="hidden" name="actionJeux" id="actionJeux" value="single"><input type="hidden" name="jeu" id="jeu" value="tza"><div style="color:antiquewhite;font-size:8pt;font-weight:normal;">
+        <script>
+          // save game settings
+          function sendParam() {
+            $('#dvParam').hide();
+            $.post("../../rec_premium_jeux.php", $("#fmParam").serialize(), function(data) {
+              window.location.reload();
+            });
+          }
+        </script>
+          <table style="width:100%;border-collapse:separate;border-spacing:5px"><tr><th style="text-align:right;font-size:8pt;color:antiquewhite">Prefered&nbsp;<a class="clAideTip" href="#jeupref" rel="#jeupref"><span class="clAide">[?]</span></a></th><td style="text-align:left"><input type="checkbox" name="tzaprefere" value="1" ></td></tr>
+        <tr><th style="text-align:right;font-size:8pt;color:antiquewhite">Invisible&nbsp;<a class="clAideTip" href="#jeuinv" rel="#jeuinv"><span class="clAide">[?]</span></a></th><td style="text-align:left"><input type="checkbox" name="invisible" value="1" ></td></tr></table><div id="jeupref" style="padding:5px;background-color:#333333;color:antiquewhite;filter: alpha(opacity=90);-moz-opacity: 0.9;opacity: 0.9;">Your favorite games will top the list in sections to create and join.</div><div id="jeuinv" style="padding:5px;background-color:#333333;color:antiquewhite;filter: alpha(opacity=90);-moz-opacity: 0.9;opacity: 0.9;">invisible game will disappear from your dashboard. Be careful not to make invisible a game you play !</div><div style="float:right">
+        <a href="javascript:sendParam();"><img src="../../img/stop.png" style="border:none;width:15px"></a>
+      </div></div></form></div><a href="../../forum/viewforum.php?f=41" target="_blank"><img style="padding:3px" alt="Forum of the game" title="Forum of the game" src="../../img/ico_forum.png" border=0></a><a href="../../achatjeu.php?jeu=tza" class="clAchat" rel="../../achatjeu.php?jeu=tza"><img style="padding:3px" alt="Buy this game !" title="Buy this game !" src="../../img/ico_buy.png" border=0></a><a href="../../partiesuivante.php?jeu=tza"><img style="padding:3px" alt="Next game" title="Next game" src="../../img/ico_next.png" border=0></a></td></tr>                    <tr><td><br></td></tr>
+										<tr>
+											<td style="text-align:center;" class="clTexteFort">
+											  <div align=center>
+               		      <table border="0" cellpadding="0" cellspacing="0">
+																											<tr>
+															<td class="clTexteFort" style="border-top:solid 1px rgb(0,51,102);padding-top:4px;padding-bottom:2px;text-align:center;vertical-align:top;"><a href="javascript:void(0);" onclick="detailjoueur(55655)" class="clLienJoueur"><span style="color:red; font-size:10pt;" >gruby_karol</span></a><img alt="online" title="online" src="../../img/ico_online.png"  style="display:none;vertical-align:middle"></td>
+														</tr>
+														<tr>
+															<td>
+																<table border="0" cellpadding="2" cellspacing="0">
+																	<tr>
+																		<td class="clTexteFort" colspan="3" style="vertical-align:middle">Remaining pieces</td>
+																	</tr>
+																	<tr>
+																	<td class=clBody style=color:white;font-weight:bold;><span style=font-size:12pt>5</span>x<img src=img/11b.gif width=30></td><td class=clBody style=color:white;font-weight:bold;><span style=font-size:12pt>9</span>x<img src=img/21b.gif width=30></td><td class=clBody style=color:white;font-weight:bold;><span style=font-size:12pt>15</span>x<img src=img/31b.gif width=30></td>																	</tr>
+																</table>
+															</td>
+														</tr>
+																											<tr>
+															<td class="clTexteFort" style="border-top:solid 1px rgb(0,51,102);padding-top:4px;padding-bottom:2px;text-align:center;vertical-align:top;"><a href="javascript:void(0);" onclick="detailjoueur(91614)" class="clLienJoueur"><span style="" >testuser</span></a><img alt="online" title="online" src="../../img/ico_online.png"  style="vertical-align:middle"></td>
+														</tr>
+														<tr>
+															<td>
+																<table border="0" cellpadding="2" cellspacing="0">
+																	<tr>
+																		<td class="clTexteFort" colspan="3" style="vertical-align:middle">Remaining pieces</td>
+																	</tr>
+																	<tr>
+																	<td class=clBody style=color:white;font-weight:bold;><span style=font-size:12pt>5</span>x<img src=img/12b.gif width=30></td><td class=clBody style=color:white;font-weight:bold;><span style=font-size:12pt>9</span>x<img src=img/22b.gif width=30></td><td class=clBody style=color:white;font-weight:bold;><span style=font-size:12pt>14</span>x<img src=img/32b.gif width=30></td>																	</tr>
+																</table>
+															</td>
+														</tr>
+																									</table>
+												</div>
+											</td>
+										</tr>
+
+               		</table>
+									<br>
+
+									<script type="text/javascript">function envoyerMessage() {if (document.fmMiniForum.pMessage.value != '') { document.fmMiniForum.submit();} else { alert("You have to put a message!");}}
+            function moreMiniForum() {
+              $('.clMiniForumMoins').hide();
+              $('.clMiniForumPlus').show();
+            }
+            function lessMiniForum() {
+              $('.clMiniForumPlus').hide();
+              $('.clMiniForumMoins').show();
+            }</script>      <form name="fmMiniForum" method="post" action="miniforum.php?id=37683">      <table border=0 cellpadding=1 cellspacing=1 width=250>        <tr>          <td colspan=2>            <div style="float:left">&nbsp;<img alt="miniforum" src="img/en_miniforum.gif"></div>            <div style="float:right" rel="../../aideminiforum.php" class="clMiniForum">                  <img alt="help" src="img/aide.gif" border="0">            </div>          </td>        </tr>        <tr><td colspan="2" style="font-style:italic; font-size:7pt;">You can leave a message for other players.</td></tr>        <tr><td colspan="2"><textarea id="miniforumTextarea" name="pMessage" class="clInput" style="width:250px;padding:0" rows="4"></textarea></td></tr>        <tr><td colspan="2" style="text-align:right"><input type="button" class="clBouton btn" value="SEND" onclick="envoyerMessage();"></td></tr>      </table><table style="border:none;width:250px;table-layout: fixed;border-collapse:separate;border-spacing:1px;" id="miniforumMessages">      </table>      </form>                </td>
+              </tr>
+         		</table>
+          </td>
+          <td style="vertical-align:top;">
+            <div style="position:relative;height:90px">
+              	                                      <form name="fmPlateau" method="post" action="traitement.php?id=37683">
+                    <input type="hidden" name="pAction" value="">
+                    <input type="hidden" name="pL" value="">
+                    <input type="hidden" name="pC" value="">
+                    <input type="hidden" name="pIdCoup" value="598032cfbbc3b">
+						</div><div><div style="position:relative;width:600px;height:600px;background-image:url(img/plateau.png);"><div style="position:absolute;left:30px;top:150px;background-image:url('img/12.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:30px;top:210px;background-image:url('img/32.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:30px;top:270px;background-image:url('img/32.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:30px;top:330px;background-image:url('img/21.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:30px;top:390px;background-image:url('img/32.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:90px;top:120px;background-image:url('img/22.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:90px;top:180px;background-image:url('img/31.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:90px;top:240px;background-image:url('img/21.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:90px;top:300px;background-image:url('img/21.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:90px;top:360px;background-image:url('img/32.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:90px;top:420px;background-image:url('img/32.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:150px;top:90px;background-image:url('img/22.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:150px;top:150px;background-image:url('img/32.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:150px;top:210px;background-image:url('img/21.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:150px;top:270px;background-image:url('img/22.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:150px;top:330px;background-image:url('img/22.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:150px;top:390px;background-image:url('img/31.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:150px;top:450px;background-image:url('img/12.png')"><img style="position:absolute:left:0px;top:0px" src="img/num2.gif"></div><div style="position:absolute;left:210px;top:60px;background-image:url('img/31.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:210px;top:120px;background-image:url('img/22.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:210px;top:180px;background-image:url('img/31.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:210px;top:240px;background-image:url('img/32.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:210px;top:300px;background-image:url('img/21.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:210px;top:360px;background-image:url('img/22.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:210px;top:420px;"></div><div style="position:absolute;left:210px;top:480px;background-image:url('img/11.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:270px;top:30px;background-image:url('img/22.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:270px;top:90px;background-image:url('img/21.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:270px;top:150px;background-image:url('img/32.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:270px;top:210px;background-image:url('img/12.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:270px;top:270px;"></div><div style="position:absolute;left:270px;top:330px;background-image:url('img/32.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:270px;top:390px;background-image:url('img/21.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:270px;top:450px;"></div><div style="position:absolute;left:270px;top:510px;background-image:url('img/31.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:330px;top:60px;background-image:url('img/31.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:330px;top:120px;background-image:url('img/31.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:330px;top:180px;background-image:url('img/22.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:330px;top:240px;background-image:url('img/32.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:330px;top:300px;background-image:url('img/32.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:330px;top:360px;background-image:url('img/31.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:330px;top:420px;background-image:url('img/31.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:330px;top:480px;background-image:url('img/12.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:390px;top:90px;background-image:url('img/22.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:390px;top:150px;background-image:url('img/12.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:390px;top:210px;background-image:url('img/32.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:390px;top:270px;background-image:url('img/31.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:390px;top:330px;background-image:url('img/21.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:390px;top:390px;background-image:url('img/21.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:390px;top:450px;background-image:url('img/31.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:450px;top:120px;background-image:url('img/32.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:450px;top:180px;background-image:url('img/32.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:450px;top:240px;background-image:url('img/11.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:450px;top:300px;"></div><div style="position:absolute;left:450px;top:360px;background-image:url('img/11.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:450px;top:420px;background-image:url('img/11.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:510px;top:150px;background-image:url('img/31.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:510px;top:210px;background-image:url('img/11.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:510px;top:270px;background-image:url('img/31.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:510px;top:330px;background-image:url('img/31.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div><div style="position:absolute;left:510px;top:390px;background-image:url('img/31.png')"><img style="position:absolute:left:0px;top:0px" src="img/num1.gif"></div></div></div>      		        </form>
+                      <div style="text-align:center;"><div style="font-size:7pt;font-style:italic;"><br>&copy;2003 Don & Co, TZAAR is a Kris Burm's game.<br>On-line adaptation by fredm (<a style="font-size:7pt;font-style:italic;font-weight:normal;" href="mailto:fredm@boiteajeux.net">fredm@boiteajeux.net</a>)</div></div>
+  		    </td>
+          <td style="vertical-align:top">
+
+          <table style="border:none"><tr><td class=clTexteFort style=text-align:center;vertical-align:middle>testuser<br>01/08/2017<br>09:50</td><td class=clTexteFort style=text-align:center;vertical-align:middle><div class=clTexteFort>STACKING UP</div><table border=0 cellpadding=0 cellspacing=0 style=background-image:url(img/miniplateau.gif);><tr><td><img src=img/_.gif width=10 height=200></td><td style=vertical-align:middle;><table border=0 cellpadding=0 cellspacing=0><tr><td class=clMiniH style=background-image:url(img/12m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/32m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/32m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/21m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/32m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr></table></td><td style=vertical-align:middle;><table border=0 cellpadding=0 cellspacing=0><tr><td class=clMiniH style=background-image:url(img/22m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/21m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/21m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/32m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/32m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr></table></td><td style=vertical-align:middle;><table border=0 cellpadding=0 cellspacing=0><tr><td class=clMiniH style=background-image:url(img/22m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/32m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/21m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/22m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/22m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/12m.gif);background-color:rgb(0,255,0);><div style=height:20;width:20>&nbsp;</div></td></tr></table></td><td style=vertical-align:middle;><table border=0 cellpadding=0 cellspacing=0><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/22m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/32m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/21m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/22m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/12m.gif);background-color:rgb(255,0,0);><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/11m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr></table></td><td style=vertical-align:middle;><table border=0 cellpadding=0 cellspacing=0><tr><td class=clMiniH style=background-image:url(img/22m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/21m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/32m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/12m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/_.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/32m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/21m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/_.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr></table></td><td style=vertical-align:middle;><table border=0 cellpadding=0 cellspacing=0><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/22m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/32m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/32m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/12m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr></table></td><td style=vertical-align:middle;><table border=0 cellpadding=0 cellspacing=0><tr><td class=clMiniH style=background-image:url(img/22m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/12m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/32m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/21m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/21m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr></table></td><td style=vertical-align:middle;><table border=0 cellpadding=0 cellspacing=0><tr><td class=clMiniH style=background-image:url(img/32m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/32m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/11m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/_.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/11m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/11m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr></table></td><td style=vertical-align:middle;><table border=0 cellpadding=0 cellspacing=0><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/11m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr></table></td></tr></table></td><tr><td class=clTexteFort style=text-align:center;vertical-align:middle>testuser<br>01/08/2017<br>09:50</td><td class=clTexteFort style=text-align:center;vertical-align:middle><div class=clTexteFort>CAPTURE</div><table border=0 cellpadding=0 cellspacing=0 style=background-image:url(img/miniplateau.gif);><tr><td><img src=img/_.gif width=10 height=200></td><td style=vertical-align:middle;><table border=0 cellpadding=0 cellspacing=0><tr><td class=clMiniH style=background-image:url(img/12m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/32m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/32m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/21m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/32m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr></table></td><td style=vertical-align:middle;><table border=0 cellpadding=0 cellspacing=0><tr><td class=clMiniH style=background-image:url(img/22m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/21m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/21m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/32m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/32m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr></table></td><td style=vertical-align:middle;><table border=0 cellpadding=0 cellspacing=0><tr><td class=clMiniH style=background-image:url(img/22m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/32m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/21m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/22m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/22m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/12m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr></table></td><td style=vertical-align:middle;><table border=0 cellpadding=0 cellspacing=0><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/22m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/32m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/21m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/22m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/11m.gif);background-color:rgb(0,255,0);><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/11m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr></table></td><td style=vertical-align:middle;><table border=0 cellpadding=0 cellspacing=0><tr><td class=clMiniH style=background-image:url(img/22m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/21m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/32m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/12m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/_.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/32m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/21m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/12m.gif);background-color:rgb(255,0,0);><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr></table></td><td style=vertical-align:middle;><table border=0 cellpadding=0 cellspacing=0><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/22m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/32m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/32m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/12m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr></table></td><td style=vertical-align:middle;><table border=0 cellpadding=0 cellspacing=0><tr><td class=clMiniH style=background-image:url(img/22m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/12m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/32m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/21m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/21m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr></table></td><td style=vertical-align:middle;><table border=0 cellpadding=0 cellspacing=0><tr><td class=clMiniH style=background-image:url(img/32m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/32m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/11m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/_.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/11m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/11m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr></table></td><td style=vertical-align:middle;><table border=0 cellpadding=0 cellspacing=0><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/11m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr></table></td></tr></table></td><tr><td class=clTexteFort style=text-align:center;vertical-align:middle>gruby_karol<br>30/07/2017<br>12:32</td><td class=clTexteFort style=text-align:center;vertical-align:middle><div class=clTexteFort>CAPTURE</div><table border=0 cellpadding=0 cellspacing=0 style=background-image:url(img/miniplateau.gif);><tr><td><img src=img/_.gif width=10 height=200></td><td style=vertical-align:middle;><table border=0 cellpadding=0 cellspacing=0><tr><td class=clMiniH style=background-image:url(img/12m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/32m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/32m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/21m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/32m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr></table></td><td style=vertical-align:middle;><table border=0 cellpadding=0 cellspacing=0><tr><td class=clMiniH style=background-image:url(img/22m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/21m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/21m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/32m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/32m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr></table></td><td style=vertical-align:middle;><table border=0 cellpadding=0 cellspacing=0><tr><td class=clMiniH style=background-image:url(img/22m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/32m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/21m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/22m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/22m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/12m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr></table></td><td style=vertical-align:middle;><table border=0 cellpadding=0 cellspacing=0><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/22m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/32m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/21m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/22m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/11m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/11m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr></table></td><td style=vertical-align:middle;><table border=0 cellpadding=0 cellspacing=0><tr><td class=clMiniH style=background-image:url(img/22m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/21m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/32m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/12m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/_.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/32m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/21m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/12m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr></table></td><td style=vertical-align:middle;><table border=0 cellpadding=0 cellspacing=0><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/22m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/32m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/32m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/12m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr></table></td><td style=vertical-align:middle;><table border=0 cellpadding=0 cellspacing=0><tr><td class=clMiniH style=background-image:url(img/22m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/12m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/32m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/21m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/21m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr></table></td><td style=vertical-align:middle;><table border=0 cellpadding=0 cellspacing=0><tr><td class=clMiniH style=background-image:url(img/32m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/32m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/32m.gif);background-color:rgb(0,255,0);><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/11m.gif);background-color:rgb(255,0,0);><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/11m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/11m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr></table></td><td style=vertical-align:middle;><table border=0 cellpadding=0 cellspacing=0><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/11m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr><tr><td class=clMiniH style=background-image:url(img/31m.gif)><div style=height:20;width:20>&nbsp;</div></td></tr></table></td></tr></table></td></table>          </td>
+  		  </tr>
+  		</table>
+
+
+    </div>
+  </body>
+</html>
