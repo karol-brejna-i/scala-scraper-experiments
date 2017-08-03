@@ -5,28 +5,26 @@ import net.ruippeixotog.scalascraper.browser.Browser
 import net.ruippeixotog.scalascraper.dsl.DSL._
 import net.ruippeixotog.scalascraper.model.Element
 import net.ruippeixotog.scalascraper.scraper.ContentExtractors.{elementList, text => stext}
-import org.fbc.experiments.ss.BajBoardExtractor.inProgressUri
 import org.fbc.experiments.ss.model.GameListItem
 
 object ActiveGameListExtractor extends StrictLogging {
-  def obtainGames(browser: Browser) = {
+
+  def apply(doc: Browser#DocumentType) = extractData(doc)
+
+  def extractData(doc: Browser#DocumentType) = {
     logger.info("getting games in progress")
-    val games = getGamesInProgress(browser)
+    val games = getGamesInProgress(doc)
     val list = games.getOrElse(List())
 
-    list.map(it => {
-      logger.info("iiiiiiiiiiiiiiiiiiiiii")
-      val representation = extractGameListItem(it)
-      representation
-    })
+    list.map( extractGameListItem(_) )
   }
 
-  private def getGamesInProgress(browser: Browser) = {
+  private def getGamesInProgress(gameListPage: Browser#DocumentType) = {
     logger.info("getGamesInProgress")
-    val gameListPage = browser.get(s"$inProgressUri")
-    //  logger.debug(gameDetails.toHtml)
     val idx = gameListPage.toHtml.indexOf("You have to log in to access this page!")
-    logger.info(s"notLoggedIdx $idx")
+    if (idx > 0) {
+      logger.warn(s"Obtaining games in progress, but not logged in.")
+    }
     val items = gameListPage >?> elementList("#dvEnCours> div[class^=clLigne]")
     items
   }
