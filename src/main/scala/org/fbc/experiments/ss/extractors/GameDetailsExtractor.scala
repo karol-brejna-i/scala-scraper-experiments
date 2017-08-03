@@ -6,7 +6,7 @@ import net.ruippeixotog.scalascraper.dsl.DSL._
 import net.ruippeixotog.scalascraper.model.Element
 import net.ruippeixotog.scalascraper.scraper.ContentExtractors.{attr, element, elementList, text => stext}
 import org.fbc.experiments.ss.model.GameBoard.fieldNames
-import org.fbc.experiments.ss.model.{GameBoard, Piece}
+import org.fbc.experiments.ss.model.{GameBoard, GameMetadata, Piece}
 
 
 object GameDetailsExtractor extends StrictLogging {
@@ -16,12 +16,26 @@ object GameDetailsExtractor extends StrictLogging {
   def extractData(doc: Browser#DocumentType) = {
     val boardElements = doc >> elementList("body > div > table > tbody > tr > td")
 
-    val gameMetadataElement = boardElements(0) >> element("td > table")
+    val gameMetadataElement = boardElements(0) >> element("td > table > tbody > tr:nth-child(2) > td > table > tbody")
     val gameBoardElement = boardElements(1) >> element("div:nth-child(2)")
     val gameHistoryElement = boardElements(2)
 
     val pieces = getPieces(gameBoardElement)
-    mapPiecesToPositions(pieces)
+    GameBoard(mapPiecesToPositions(pieces), getGameMetadata(gameMetadataElement))
+  }
+
+
+  private def getPlayers(element: Element) = {
+  }
+
+  private def getGameMetadata(metadataElement : Element) = {
+    val gameId = (metadataElement  >> stext("tr:nth-child(1)")).split(" ")(1).substring(1)
+    val gameName = (metadataElement  >> stext("tr:nth-child(2)")).stripPrefix("\"").stripSuffix("\"")
+    val lines = metadataElement  >> elementList("tr:nth-child(7) > td > div > table > tbody > tr")
+
+    val isWhiteOnMove = (lines(0) >> "span" >> attr("style")).contains("red")
+
+    GameMetadata(gameId, gameName, lines(0).text, lines(2).text, if (isWhiteOnMove) "WHITE" else "BLACK")
   }
 
   private def getPieces(boardElement: Element) = {
@@ -63,7 +77,6 @@ object GameDetailsExtractor extends StrictLogging {
   private def mapPiecesToPositions(pieces: List[Option[Piece]]) = {
     (pieces, transposedFiledNames).zipped.collect{case p if p._1.nonEmpty => (p._2 -> p._1.get)}.toMap
   }
-
 
   /**
     * Baj stores the fields (game details page) top-down from left-right.

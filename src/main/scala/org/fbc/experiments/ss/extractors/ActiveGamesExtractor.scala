@@ -5,7 +5,7 @@ import net.ruippeixotog.scalascraper.browser.Browser
 import net.ruippeixotog.scalascraper.dsl.DSL._
 import net.ruippeixotog.scalascraper.model.Element
 import net.ruippeixotog.scalascraper.scraper.ContentExtractors.{elementList, text => stext}
-import org.fbc.experiments.ss.model.GameListItem
+import org.fbc.experiments.ss.model.GameMetadata
 
 object ActiveGameListExtractor extends StrictLogging {
 
@@ -33,10 +33,12 @@ object ActiveGameListExtractor extends StrictLogging {
     val gameId = element >> stext("div:nth-child(1)")
     val gameName = element >> stext("div:nth-child(2)")
     val users = element >> elementList("div:nth-child(3) > a > span")
-    val userOnMove = element >> stext("div:nth-child(3) > a > span[style~=red]")
+    val userOnMove = element >> stext("div:nth-child(3) > a > span[style~=bold]")
 
     val userWhite = users(0).text
     val userBlack = users(1).text
-    new GameListItem(gameId, gameName, userWhite, userBlack, userOnMove, "")
+    val sideOnMove = if (userOnMove == userWhite) "WHITE" else "BLACK"
+
+    new GameMetadata(gameId, gameName, userWhite, userBlack, sideOnMove)
   }
 }

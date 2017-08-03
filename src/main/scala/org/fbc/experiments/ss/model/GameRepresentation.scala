@@ -4,12 +4,12 @@ package org.fbc.experiments.ss.model
 sealed trait GameRepresentationTrait
 
 
-case class GameListItem(gameId: String, gameName: String, userWhite: String,
-                        userBlack: String, userOnMove: String, deadline: String) extends GameRepresentationTrait
+case class GameMetadata(gameId: String, gameName: String, userWhite: String,
+                        userBlack: String, sideOnMove: String) extends GameRepresentationTrait
 
 case class Piece(colour: String, value: String, stack: Integer) extends GameRepresentationTrait
 
-case class GameBoard(piecePositions: List[(Piece, String)], sideOnMove: String) extends GameRepresentationTrait
+case class GameBoard(piecePositions: Map[String, Piece], metadata: GameMetadata) extends GameRepresentationTrait
 
 object GameBoard {
   /**

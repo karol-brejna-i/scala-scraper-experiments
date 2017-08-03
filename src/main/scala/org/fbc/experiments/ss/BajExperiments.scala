@@ -19,6 +19,7 @@ object BajExperiments extends App with StrictLogging {
     logger.info(" result: {}", result)
     result match {
       case a : Traversable[Any] =>  logger.info(" result size: {}", a.size)
+      case _ =>
     }
   }
   def staticFileExperiment(browser: Browser) = {
@@ -46,8 +47,7 @@ object BajExperiments extends App with StrictLogging {
     logResult(result)
   }
 
-//  loginPost(browser)
-
-  //  staticFileExperiment(browser)
+  //loginPost(browser)
+  //staticFileExperiment(browser)
   latestExperiment(browser)
 }
