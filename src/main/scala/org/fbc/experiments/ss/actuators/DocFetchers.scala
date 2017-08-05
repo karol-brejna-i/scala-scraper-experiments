@@ -1,4 +1,4 @@
-package org.fbc.experiments.ss.fetchers
+package org.fbc.experiments.ss.actuators
 
 import com.typesafe.scalalogging.StrictLogging
 import net.ruippeixotog.scalascraper.browser.Browser

@@ -1,15 +1,24 @@
 package org.fbc.experiments.ss.model
 
+sealed trait InitialBoardSetup
+case object SYMMETRICAL extends InitialBoardSetup
+case object RANDOM extends InitialBoardSetup
+
+
+sealed trait MoveType
+case object CAPTURE extends MoveType
+case object STACK extends MoveType
+case object PASS extends MoveType
 
 sealed trait GameRepresentationTrait
 
-
-case class GameMetadata(gameId: String, gameName: String, userWhite: String,
-                        userBlack: String, sideOnMove: String) extends GameRepresentationTrait
-
+case class GameMetadata(gameId: String, gameName: String, userWhite: String, userBlack: String, sideOnMove: String) extends GameRepresentationTrait
 case class Piece(colour: String, value: String, stack: Integer) extends GameRepresentationTrait
-
 case class GameBoard(piecePositions: Map[String, Piece], metadata: GameMetadata) extends GameRepresentationTrait
+case class Move(moveType: MoveType, from: Option[String], to: Option[String]) extends GameRepresentationTrait
+case class FullMove(firstMove: Move, secondMove: Move) extends GameRepresentationTrait
+
+case class GameInvitation(gameName: String, eloFrom: Option[String], eloTo: Option[String], invitedPlayer: Option[String], setup: InitialBoardSetup = SYMMETRICAL)
 
 object GameBoard {
   /**
@@ -17,6 +26,7 @@ object GameBoard {
     * See: http://iuuk.mff.cuni.cz/~vesely/tzaar/thesis.pdf
     *
     * I am not sure if it sticks well to the board notation shown in TZAAR manual (and on BAJ page).
+    *
     * @return
     */
   def fieldNames = List(

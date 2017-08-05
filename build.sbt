@@ -9,7 +9,7 @@ lazy val root = (project in file(".")).
       version      := "0.1.0-SNAPSHOT"
     )),
     name := "baj-experiments",
-    libraryDependencies ++= Seq(scalaScrapper, logback, scalaLogging),
+    libraryDependencies ++= Seq(scalaScrapper, logback, scalaLogging, scalastic, scalaTest % "test"),
     mainClass in assembly := Some("org.fbc.experiments.ss.BajExperiments"),
     assemblyJarName in assembly := "application.jar"
   )

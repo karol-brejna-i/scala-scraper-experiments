@@ -24,6 +24,9 @@ object GameDetailsExtractor extends StrictLogging {
     GameBoard(mapPiecesToPositions(pieces), getGameMetadata(gameMetadataElement))
   }
 
+  def extractTurnMarker (doc: Browser#DocumentType) = {
+    doc >> "input[name=pIdCoup" >> attr("value")
+  }
 
   private def getPlayers(element: Element) = {
   }
@@ -75,7 +78,7 @@ object GameDetailsExtractor extends StrictLogging {
   }
 
   private def mapPiecesToPositions(pieces: List[Option[Piece]]) = {
-    (pieces, transposedFiledNames).zipped.collect{case p if p._1.nonEmpty => (p._2 -> p._1.get)}.toMap
+    (pieces, fieldNameLookup).zipped.collect{case p if p._1.nonEmpty => (p._2 -> p._1.get)}.toMap
   }
 
   /**
@@ -86,7 +89,8 @@ object GameDetailsExtractor extends StrictLogging {
     * but it keeps the empty center field (so we need to keep a name for it)
     * @return
     */
-  def transposedFiledNames = fieldNames.sliding(9, 9).toList.reverse.transpose.flatten.zipWithIndex.filter{ it => (it._1 != "-" || it._2 == 40)}.unzip._1
+  def transposedFiledNames = fieldNames.sliding(9, 9).toList.reverse.transpose
+  def fieldNameLookup = transposedFiledNames.flatten.zipWithIndex.filter{ it => (it._1 != "-" || it._2 == 40)}.unzip._1
 
   // the equivalent of above
   val bajFieldNames = List(
