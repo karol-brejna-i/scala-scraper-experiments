@@ -36,7 +36,7 @@ class BajBoard extends BoardRepresentations {
   override def toPhysicalCoordinates(position: String): (Int, Int) = {
     validatePosition(position)
     val column = position.head - 65
-    val row = pos   itionLookup(position.substring(0,1)).indexOf(position) + (if (column > 4) column - 4 else 0)
+    val row = positionLookup(position.substring(0,1)).indexOf(position) + (if (column > 4) column - 4 else 0)
     (row, column)
   }
 }

@@ -25,7 +25,7 @@ object GameDetailsExtractor extends StrictLogging {
   }
 
   def extractTurnMarker (doc: Browser#DocumentType) = {
-    doc >> "input[name=pIdCoup" >> attr("value")
+    doc >> "input[name=pIdCoup]" >> attr("value")
   }
 
   private def getPlayers(element: Element) = {
