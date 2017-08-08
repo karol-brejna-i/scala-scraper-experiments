@@ -10,16 +10,24 @@ class GameActions
 
 object GameActions extends StrictLogging with DebugUtils {
   private val moveUri = "http://www.boiteajeux.net/jeux/tza/traitement.php?id=%s"
+  private val newGameUri = "http://www.boiteajeux.net/index.php?p=creer"
 
   private val FROM_ACTION = "choisirSource"
   private val TO_ACTION   = "destination"
   private val PASS_ACTION = "passer"
 
-
   def startNewGame(browser: Browser, invitation: GameInvitation) = {
-    logger.info("getGamesInProgress")
-
-    //    <select class="clInput" name="pTypePlateau"><option value="0" selected="">Symmetrical board (P)</option><option value="1">Random board (H)</option></select>
+    logger.info("startNewGame {}", invitation)
+    val form = Map(
+      "pAction" -> "creer",
+      "pJeu" -> "tza",
+      "pNomPartie" -> invitation.gameName,
+      "pEloMin" -> invitation.eloFrom.getOrElse(""),
+      "pEloMax" -> invitation.eloTo.getOrElse(""),
+      "pInvite%5B%5D" -> invitation.invitedPlayer.getOrElse(""),
+      "pTypePlateau" -> (if (invitation.setup == SYMMETRICAL) "0" else "1")
+    )
+    val result = browser.post(newGameUri, form)
   }
 
   def joinGame(browser: Browser, login: String, password: String) = ???

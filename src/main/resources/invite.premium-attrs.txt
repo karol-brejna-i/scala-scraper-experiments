@@ -1,0 +1,23 @@
+<div class="clPremium">		<script type="text/javascript">
+          $(function(){
+    				// Slider
+    				$('#slider').slider({ max: 29,
+              change: function() {
+                $("#speed").html(100 - $( "#slider" ).slider( "option", "value" ));
+                $("#speedFilter").val(100 - $( "#slider" ).slider( "option", "value" ));
+             }
+            });
+				  });
+				</script><table cellpadding="3" cellspacing="1" border="0"><tbody><tr><td class="clEtiquettePremium" style="color:red">Move timer<img src="./img/mini_premium.png" alt="Premium" title="Premium">&nbsp;</td><td>
+          <select class="clInput" name="timeout">
+          <option value="43200">30 days</option>
+          <option value="10080" selected="selected">7 days</option>
+          <option value="4320">3 day</option>
+          <option value="1440">1 day</option>
+          <option value="720">12 hours</option>
+          </select>
+        </td></tr></tbody></table><table cellpadding="3" cellspacing="1" border="0"><tbody><tr><td class="clEtiquettePremium">Visibility<img src="./img/mini_premium.png" alt="Premium" title="Premium">&nbsp;</td><td class="clOptionPremium">All<br><input type="radio" class="clInput" id="visO" name="visibilite" value="O" checked="checked"></td><td class="clOptionPremium">Premium<br><input type="radio" class="clInput" id="visP" name="visibilite" value="P"></td><td class="clOptionPremium">Friends<br><input type="radio" class="clInput" id="visF" name="visibilite" value="F"></td></tr></tbody></table><table cellpadding="3" cellspacing="1" border="0"><tbody><tr><td class="clEtiquettePremium">Rating/Stats<img src="./img/mini_premium.png" alt="Premium" title="Premium">&nbsp;</td><td class="clOptionPremium">Counted<br><input type="radio" class="clInput" name="classement" value="1" checked="checked"></td><td class="clOptionPremium">Non counted<br><input type="radio" class="clInput" name="classement" value="0"></td></tr></tbody></table><table cellpadding="3" cellspacing="1" border="0"><tbody><tr><td class="clEtiquettePremium">Speed filter<img src="./img/mini_premium.png" alt="Premium" title="Premium">&nbsp;
+                    <span class="clAide" style="color:darkred" rel="popover" data-content="<div style='width:400px'>You can limit the game access with the Speed Rating.<br>100% means that everybody can see the game, 10% means that only the 10% fastest players can see it. You can not define a range where you are not into.</div>" data-original-title="Speed filter">[?]</span>&nbsp;</td>
+                    <td class="clOptionPremium"><input id="speedFilter" name="rapidite" type="hidden" class="clInput" value="100">
+                    </td><td class="clBody" style="color:black;text-align:center;" width="380"><div id="slider" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 0%;"></a></div>
+        the <span id="speed">100</span>% fastest players will see your game.</td></tr></tbody></table></div>
