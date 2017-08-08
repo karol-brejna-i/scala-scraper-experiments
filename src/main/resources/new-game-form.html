@@ -1,0 +1,1217 @@
+<form id="fmCreerJeu" name="fmCreerJeu" action="gestion.php" method="post">
+    <input type="hidden" name="pAction"
+           value="creer">
+    <select id="pJeu" name="pJeu" size="1" class="clInput"
+            style="font-weight:bold;font-size:10pt">
+        <option value="agr" selected="">AGRICOLA</option>
+        <option value="alc">ALCHEMISTS</option>
+        <option value="alh">ALHAMBRA</option>
+        <option value="ama">AMAZONES</option>
+        <option value="klg">BANGKOK KLONGS</option>
+        <option value="brx">BRUXELLES 1893</option>
+        <option value="btu">BUTTON UP!</option>
+        <option value="ccy">CARD CITY</option>
+        <option value="cph">CEPHALOPOD</option>
+        <option value="cit">CITIES</option>
+        <option value="ccd">CONCORDIA</option>
+        <option value="dlc">DELUXE CAMPING</option>
+        <option value="deu">DEUS</option>
+        <option value="dia">DIABALLIK</option>
+        <option value="cdb">DIE BURGEN VON BURGUND</option>
+        <option value="dix">DIXIT</option>
+        <option value="wba">DORIX</option>
+        <option value="drf">DRAGON FACE</option>
+        <option value="ddz">DRôLES DE ZèBRES</option>
+        <option value="dlo">DUNGEON LORDS</option>
+        <option value="ptz">DUNGEON PETZ</option>
+        <option value="dvo">DVONN</option>
+        <option value="exx">EXXIT</option>
+        <option value="fns">FINSTERE FLURE</option>
+        <option value="gko">GINKGOPOLIS</option>
+        <option value="gpf">GIPF</option>
+        <option value="jar">JARNAC</option>
+        <option value="kab">KABALEO</option>
+        <option value="kam">KAMON</option>
+        <option value="kan">KANBAN</option>
+        <option value="khi">KHITAN</option>
+        <option value="gdm">LA GUERRE DES MOUTONS</option>
+        <option value="mlc">MILLION CLUB</option>
+        <option value="myk">MYKERINOS</option>
+        <option value="myr">MYRMES</option>
+        <option value="ndg">NATIONS: THE DICE GAME</option>
+        <option value="pal">PALMYRA</option>
+        <option value="pax">PAX</option>
+        <option value="pct">PüNCT</option>
+        <option value="rlm">RALLYMAN</option>
+        <option value="rgh">ROMANS GO HOME!</option>
+        <option value="sar">SARENA</option>
+        <option value="shz">SHAZAMM</option>
+        <option value="sia">SIAM</option>
+        <option value="spl">SPLITS</option>
+        <option value="ttg">TATOO TURTLES</option>
+        <option value="tbs">THE BOSS</option>
+        <option value="tor">TORRES</option>
+        <option value="tow">TOWN CENTER</option>
+        <option value="trj">TRAJAN</option>
+        <option value="ttb">TWIN TIN BOTS</option>
+        <option value="tyr">TYRUS</option>
+        <option value="tza">TZAAR</option>
+        <option value="tzo">TZOLK'IN</option>
+        <option value="van">VANUATU</option>
+        <option value="yin">YINSH</option>
+        <option value="yok">YOKAI NO MORI</option>
+        <option value="zer">ZERTZ</option>
+    </select>
+    <input type="text" size="20" maxlength="20" class="clInput" name="pNomPartie"
+           from <input type="text" size="4" maxlength="4" class="clInput" name="pEloMin" value="">
+    to <input type="text" size="4" maxlength="4" class="clInput" name="pEloMax" value="">
+    &nbsp;<span class="clAide"
+                rel="popover"
+                data-content="<div style='width:400px'>You can limit the game access with the Elo Rating.<br>EloMin < EloMax (with at least a range of 100 pts)<br>Your own Elo can't be less than the minimum required.<br>Irregular or empty values will create infinite range.<br><br><u>Example 1 :</u> ELO MIN : 1600 and ELO MAX : 1700 will authorize players with ELO between 1600 and 1700.<br><br><u>Example 2 :</u> ELO MIN : 1800 will authorize players with ELO greater than 1800.<br><br><u>Example 3 :</u> ELO MAX : 1600 will authorize players with ELO less than 1600.</div>"
+                data-original-title="ELO filter">[?]</span>&nbsp;
+
+    <input type="text" size="10" maxlength="20" class="clInput" name="pInvite[]" value="">&nbsp;&nbsp;
+    <input type="text" size="10" maxlength="20" class="clInput" name="pInvite[]" value="">&nbsp;&nbsp;
+    <input type="text" size="10" maxlength="20" class="clInput" name="pInvite[]" value="">&nbsp;&nbsp;
+    <input type="text" size="10" maxlength="20" class="clInput" name="pInvite[]" value="">&nbsp;&nbsp;
+    <input type="text" size="10" maxlength="20" class="clInput" name="pInvite[]" value="">&nbsp;&nbsp;
+    <br>
+    <input type="text" size="10" maxlength="20" class="clInput" name="pInvite[]" value="">&nbsp;&nbsp;
+    <input type="text" size="10" maxlength="20" class="clInput" name="pInvite[]"
+    <input
+        type="text" size="10" maxlength="20" class="clInput" name="pInvite[]" value="">&nbsp;&nbsp;
+    <input
+        type="text" size="10" maxlength="20" class="clInput" name="pInvite[]" value="">&nbsp;&nbsp;
+    <input
+        type="text" size="10" maxlength="20" class="clInput" name="pInvite[]" value="">&nbsp;&nbsp;
+
+    <select class="clInput" name="pNbrJAlh">
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                </select>
+
+    <input type="checkbox" name="pMainVisible" value="1">
+    <select class="clInput" name="pNumPlateauDdz">
+                    <option value="0">Standard (7/7/5/5/3/3)</option>
+                    <option value="1">President reserve (9/7/5/3/3/3)</option>
+                </select>
+    Random setting up&nbsp;
+                <td style="text-align:left;" colspan="2"><input type="checkbox" name="pPlacementAleatoire" value="1"
+                                                                checked="">
+            
+            
+        
+    </div>
+    <div id="dropmsg_gpf" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Rules&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pRegles">
+                    <option value="0">Basic</option>
+                    <option value="1" selected="">Standard</option>
+                    <option value="2">Advanced</option>
+                </select>
+            
+            
+        
+    </div>
+    <div id="dropmsg_fns" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Number of players&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pNbrJFns">
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                </select>
+            
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Rules&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pTypePartie">
+                    <option value="STANDARD" selected="">Standard</option>
+                    <option value="AVANCEE">Advanced</option>
+                </select>
+            
+            <tr>
+                <td style="text-align:right;"><input type="checkbox" name="pFnsOption" value="XXX">
+                <td class="clEtiquette" style="text-align:left;">'3 hits' card instead of Monster movement card with
+                    value 5&nbsp;
+                
+            
+            
+        
+    </div>
+    <div id="dropmsg_gdm" class="clDetailJeu" style="height: 100px; display: none;"><img style="float:right" id="gdmImg"
+                                                                                         src="./jeux/gdm/img/logo_gdm2.png">
+        <div class="clEtiquette">Number of players&nbsp;<select class="clInput" name="pNbrJGdm">
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select></div>
+        <div class="clEtiquette"><input type="checkbox" id="pGdmExt" name="pGdmExt" value="1" checked="checked">&nbsp;Aquatic
+            extension
+        </div>
+        <div class="clEtiquette" style="padding-left:100px;"><input type="checkbox" id="pGdmDef" name="pGdmDef"
+                                                                    value="1">&nbsp;32 tiles removed
+        </div>
+        <div class="clEtiquette" style="padding-left:100px;"><input type="checkbox" id="pGdmWater" name="pGdmWater"
+                                                                    value="1">&nbsp;Waterproof sheeps
+        </div>
+    </div>
+    <div id="dropmsg_klg" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Number of players&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pNbrJKlg">
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Variant&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pKlgVariante">
+                    <option value="0" selected="">Standard</option>
+                    <option value="1">Tactical</option>
+                </select>
+            
+            
+        
+    </div>
+    <div id="dropmsg_tbs" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Number of players&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pNbrJTbs">
+                    <option value="2" selected="">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            
+            
+        
+    </div>
+    <div id="dropmsg_dia" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Board&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pNumPlateauDia">
+                    <option value="0">Standard</option>
+                    <option value="1">Variant</option>
+                </select>
+            
+            
+        
+    </div>
+    <div id="dropmsg_tyr" class="clDetailJeu" style="display: none;"></div>
+    <div id="dropmsg_tor" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Number of players&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pNbrJTor">
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Stock&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pVarPioche">
+                    <option value="0" selected="">Standard (shared stock)</option>
+                    <option value="1">Private stock (10 cards)</option>
+                    <option value="2">10 cards in hand</option>
+                </select>
+            
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Turn order&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pVarOrdre">
+                    <option value="0" selected="">Standard (turn order)</option>
+                    <option value="1">Scoring order =&gt; Turn order</option>
+                </select>
+            
+            
+        
+    </div>
+    <div id="dropmsg_ama" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Number of players&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pNbrJAma">
+                    <option value="3">3</option>
+                    <option value="4" selected="">4</option>
+                    <option value="5">5</option>
+                </select>
+            
+            
+        
+    </div>
+    <div id="dropmsg_zer" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Game type&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="seVarianteZer">
+                    <option value="0">Blitz</option>
+                    <option value="1" selected="">Standard</option>
+                    <option value="2">Advanced</option>
+                    <option value="3">Expert</option>
+                </select>
+            
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Capturing&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pZerCoupAuto">
+                    <option value="0" selected="">Standard</option>
+                    <option value="1">Automatic</option>
+                </select>
+            
+            
+        
+    </div>
+    <div id="dropmsg_yin" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Game type&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="seVarianteYin">
+                    <option value="0">Blitz</option>
+                    <option value="1" selected="">Standard</option>
+                </select>
+            
+            
+        
+    </div>
+    <div id="dropmsg_shz" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Variant&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="seVariante">
+                    <option value="0" selected="">Standard (5 ?)</option>
+                    <option value="1">14 spells in hand (14)</option>
+                    <option value="2">You choose the order of the 14 spells (5 !)</option>
+                </select>
+            
+            
+        
+    </div>
+    <div id="dropmsg_exx" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Distribution&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pExxCoupAuto">
+                    <option value="0" selected="">Standard</option>
+                    <option value="1">Automatic</option>
+                </select>
+            
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Game&nbsp;
+                <td style="text-align:left;"><select class="clInput" id="pExxVarStock" name="pExxVarStock">
+                    <option value="0" selected="">Standard (39)</option>
+                    <option value="1">Blitz (29)</option>
+                    <option value="2">Introduction (19)</option>
+                </select>
+            
+            
+        
+    </div>
+    <div id="dropmsg_dlc" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Number of players&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pNbrJDlc">
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4" selected="">4</option>
+                </select>
+            
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Variant&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pVarDlc">
+                    <option value="0" selected="">Standard</option>
+                    <option value="1">Expert</option>
+                </select>
+            
+            
+        
+    </div>
+    <div id="dropmsg_cph" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Board size&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pTypePlateauCph">
+                    <option value="0" selected="">Board 5x5</option>
+                    <option value="1">Board 3x3</option>
+                    <option value="2">Board 3x5</option>
+                </select>
+            
+            
+        
+    </div>
+    <div id="dropmsg_kam" class="clDetailJeu" style="display: none;"></div>
+    <div id="dropmsg_sia" class="clDetailJeu" style="display: none;"></div>
+    <div id="dropmsg_cit" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Scoring Level&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pNiveauCit">
+                    <option value="1">Level 1</option>
+                    <option value="2">Level 2</option>
+                    <option value="3" selected="">Level 3</option>
+                </select>
+            
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Number of players&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pNbrJCit">
+                    <option value="1">solo</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option selected="">4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                </select>
+            
+            
+        
+    </div>
+    <div id="dropmsg_tza" class="clDetailJeu" style="display: block;">
+        <table cellpadding="1" cellspacing="1" border="0">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Board setting up&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pTypePlateau">
+                    <option value="0" selected="">Symmetrical board (P)</option>
+                    <option value="1">Random board (H)</option>
+                </select>
+            
+            
+        
+    </div>
+    <div id="dropmsg_pct" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Variant&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pVarPct">
+                    <option value="0">Basic</option>
+                    <option value="1" selected="">Standard</option>
+                </select>
+            
+            
+        
+    </div>
+    <div id="dropmsg_agr" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0" style="width:100%">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;width:20%">Number of players&nbsp;
+                <td style="text-align:left;"><select class="clInput" id="pNbrJAgr" name="pNbrJAgr">
+                    <option value="1">solo</option>
+                    <option value="2" selected="selected">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            
+            <tr>
+                <td class="clEtiquette" style="text-align:right">Variant&nbsp;
+                <td style="text-align:left;"><select class="clInput" id="pVarAgr" name="pVarAgr">
+                    <option value="0">Family game</option>
+                    <option value="1" selected="selected">Advanced game</option>
+                    <option value="2">Tournament mode</option>
+                </select>&nbsp;<span class="clAide" rel="popover"
+                                     data-content="<div style='width:400px'>Tournament mode is the same as advanced mode, except that some cards (considered as overpowered in most of tournaments) are banned. You can find the banned list on the forum.</div>"
+                                     data-original-title="Variant">[?]</span>
+            
+            
+        
+        <div id="optagr_0" class="clVarAgr"></div>
+        <div id="optagr_1" class="clVarAgr">
+            <table cellpadding="1" cellspacing="1" border="0" style="width:60%">
+                <tbody>
+                <tr>
+                    <td class="clEtiquette" style="text-align:right;width:33%">Cards deck&nbsp;
+                    <td class="clEtiquette" style="text-align:center">Beginner<br><input type="checkbox"
+                                                                                         id="pAgrCartesE"
+                                                                                         name="pAgrCartesE" value="E"
+                                                                                         checked="checked"
+                                                                                         disabled="disabled">
+                    <td class="clEtiquette" style="text-align:center">Interactive<br><input type="checkbox"
+                                                                                            id="pAgrCartesI"
+                                                                                            name="pAgrCartesI" value="I"
+                                                                                            checked="checked"
+                                                                                            disabled="disabled">
+                    <td class="clEtiquette" style="text-align:center">Complex<br><input type="checkbox" id="pAgrCartesK"
+                                                                                        name="pAgrCartesK" value="K"
+                                                                                        checked="checked"
+                                                                                        disabled="disabled">
+                
+                
+            
+            <table cellpadding="1" cellspacing="1" border="0" style="width:100%">
+                <tbody>
+                <tr>
+                    <td class="clEtiquette" style="text-align:right;width:20%">Distribution&nbsp;
+                    <td class="clEtiquette" style="text-align:left;"><select class="clInput" id="pAgrDistrib"
+                                                                             name="pAgrDistrib">
+                        <option value="">Random</option>
+                        <option value="D">Draft 7</option>
+                        <option value="9" selected="selected">Draft 7 of 9</option>
+                        <option value="X">10-7</option>
+                    </select>&nbsp;<span class="clAide" rel="popover"
+                                         data-content="<div style='width:400px'>Draft mode allows you to choose one occupation and one improvement in your first hand, then you give your hand to your left neighbor, and so on. In 10-7 mode you choose 7 improvements and 7 occupations among 10.</div>"
+                                         data-original-title="Distribution">[?]</span>
+                
+                
+            
+        </div>
+    </div>
+    <div id="dropmsg_tzo" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0" style="width:100%">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;width:20%">Number of players&nbsp;
+                <td style="text-align:left;"><select class="clInput" id="pTzoNbrJ" name="pTzoNbrJ">
+                    <option value="2" selected="selected">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            
+            <tr>
+                <td class="clEtiquette" style="text-align:right">Variant&nbsp;
+                <td style="text-align:left;"><select class="clInput" id="pTzoVar" name="pTzoVar">
+                    <option value="0" selected="selected">Basic game</option>
+                    <option value="1">Tribes and Prophecies</option>
+                </select>
+            
+            
+        
+        <div id="opttzo_0" class="clTzoVar" style="display: none;"></div>
+        <div id="opttzo_1" class="clTzoVar" style="display: none;"><input type="hidden" id="pTzoActionsRapidesChecked"
+                                                                          name="pTzoActionsRapidesChecked" value="0">
+            <table cellpadding="1" cellspacing="1" border="0" style="width:60%">
+                <tbody>
+                <tr>
+                    <td class="clEtiquette" style="text-align:right;width:33%">play with quick actions&nbsp;
+                    <td class="clEtiquette" style="text-align:center"><input type="checkbox" id="pTzoActionsRapides"
+                                                                             name="pTzoActionsRapides" value="1">
+                
+                
+            
+        </div>
+    </div>
+    <div id="dropmsg_ccd" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0" style="width:100%">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;width:20%">Number of players&nbsp;
+                <td style="text-align:left;"><select class="clInput" id="pCcdNbrJ" name="pCcdNbrJ">
+                    <option value="2">2</option>
+                    <option value="3" selected="selected">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            
+            <tr>
+                <td class="clEtiquette" style="text-align:right">Map&nbsp;
+                <td style="text-align:left;"><select class="clInput" id="pCcdMap" name="pCcdMap">
+                    <option value="0" selected="selected">Imperium</option>
+                    <option value="1">Italia</option>
+                    <option value="2">Britannia</option>
+                    <option value="3">Germania</option>
+                    <option value="4">Byzantium</option>
+                    <option value="5">Hispania</option>
+                </select>
+            
+            <tr>
+                <td class="clEtiquette" style="text-align:right">Variant&nbsp;
+                <td style="text-align:left;"><select class="clInput" id="pCcdVar" name="pCcdVar">
+                    <option value="0" selected="selected">same starting resources</option>
+                    <option value="1">chosen starting resources</option>
+                </select>
+            
+            <tr>
+                <td class="clEtiquette" style="text-align:right;width:33%">Salt&nbsp;
+                <td class="clEtiquette" style="text-align:left"><input type="checkbox" id="pCcdSalt" name="pCcdSalt"
+                                                                       value="1">
+            
+            <tr>
+                <td class="clEtiquette" style="text-align:right;width:33%">Forum tiles&nbsp;
+                <td class="clEtiquette" style="text-align:left"><input type="checkbox" id="pCcdForum" name="pCcdForum"
+                                                                       value="1">
+            
+            
+        
+        <div id="optcon_0" class="clCcdVar"></div>
+    </div>
+    <div id="dropmsg_rgh" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0" style="width:100%">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;width:20%">Human players&nbsp;
+                <td style="text-align:left;"><select class="clInput" id="pRghNbrJ" name="pRghNbrJ">
+                    <option value="1">1</option>
+                    <option value="2" selected="selected">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            
+            <tr>
+                <td class="clEtiquette" style="text-align:right;width:20%">Neutral players&nbsp;
+                <td style="text-align:left;"><select class="clInput" id="pRghNbrN" name="pRghNbrN">
+                    <option value="0" selected="selected">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                </select>
+            
+            
+        
+    </div>
+    <div id="dropmsg_kab" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Number of players&nbsp;
+                <td style="text-align:left;"><select class="clInput" id="pNbrJKab" name="pNbrJKab">
+                    <option value="2" selected="">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Variant&nbsp;
+                <td style="text-align:left;">
+                    <div id="optkab_2" class="clVarKab"><select class="clInput" name="pVarKab2">
+                        <option value="0" selected="">Random</option>
+                        <option value="1">Fair</option>
+                    </select></div>
+                    <div id="optkab_3" class="clVarKab" style="display: none;"><select class="clInput" name="pVarKab3">
+                        <option value="0" selected="">Random</option>
+                        <option value="1">Fair</option>
+                    </select></div>
+                    <div id="optkab_4" class="clVarKab" style="display: none;"><select class="clInput" name="pVarKab4">
+                        <option value="0" selected="">Random</option>
+                    </select></div>
+                
+            
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Solo&nbsp;
+                <td class="clEtiquette" style="text-align:center;"><input type="checkbox" name="pKabSolo" value="1">Play
+                    alone with bots!
+                
+            
+            
+        
+    </div>
+    <div id="dropmsg_spl" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Nbr of pieces&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pSplVariante">
+                    <option value="0" selected="">16 (standard)</option>
+                    <option value="1">20</option>
+                    <option value="2">40</option>
+                </select>
+            
+            
+        
+    </div>
+    <div id="dropmsg_drf" class="clDetailJeu" style="display: none;"></div>
+    <div id="dropmsg_ttg" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Hatching day variant&nbsp;
+                <td style="text-align:left;"><input type="checkbox" name="pTtgVarEclosion" value="1">
+            
+            
+        
+    </div>
+    <div id="dropmsg_wba" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Number of players&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pNbrJWba">
+                    <option value="2" selected="">2</option>
+                    <option value="3">3</option>
+                </select>
+            
+            
+        
+    </div>
+    <div id="dropmsg_sar" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Number of players&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pNbrJSar">
+                    <option>2</option>
+                    <option>3</option>
+                    <option selected="">4</option>
+                </select>
+            
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Variant&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pVarSar">
+                    <option value="0" selected="">Random</option>
+                    <option value="1">Fair</option>
+                </select>
+            
+            
+        
+    </div>
+    <div id="dropmsg_myk" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Number of players&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pNbrJMyk">
+                    <option value="3" selected="">3</option>
+                    <option value="4">4</option>
+                </select>
+            
+            
+        
+    </div>
+    <div id="dropmsg_van" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Number of players&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pNbrJVan">
+                    <option value="3" selected="">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Variant&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pVanVariante">
+                    <option value="0" selected="">with characters</option>
+                    <option value="1">without characters</option>
+                </select>
+            
+            
+        
+    </div>
+    <div id="dropmsg_pax" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Number of players&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pNbrJPax">
+                    <option value="1">solo</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4" selected="">4</option>
+                </select>
+            
+            
+        
+    </div>
+    <div id="dropmsg_btu" class="clDetailJeu" style="display: none;"></div>
+    <div id="dropmsg_dix" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Number of players&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pNbrJDix">
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6" selected="">6</option>
+                </select>
+            
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Language&nbsp;
+                <td style="text-align:left;">
+                    <input type="radio" name="pLangDix" value="de"><img src="./img/de_flag.gif" alt="de" title="de">&nbsp;
+                    <input type="radio" name="pLangDix" value="es"><img src="./img/es_flag.gif" alt="en" title="es">&nbsp;
+                    <input type="radio" name="pLangDix" value="en" checked="checked"><img src="./img/en_flag.gif"
+                                                                                          alt="en" title="en">&nbsp;
+                    <input type="radio" name="pLangDix" value="fr"><img src="./img/fr_flag.gif" alt="fr" title="fr">&nbsp;
+                    <input type="radio" name="pLangDix" value="it"><img src="./img/it_flag.gif" alt="it" title="it">&nbsp;
+                    <input type="radio" name="pLangDix" value="ja"><img src="./img/ja_flag.gif" alt="ja" title="ja">&nbsp;
+                    <input type="radio" name="pLangDix" value="nl"><img src="./img/nl_flag.gif" alt="nl" title="nl">&nbsp;
+                    <input type="radio" name="pLangDix" value="pl"><img src="./img/pl_flag.gif" alt="pl" title="pl">&nbsp;
+                    <input type="radio" name="pLangDix" value="onu"><img src="./img/onu_flag.gif" alt="onu" title="onu">&nbsp;
+                
+            
+            
+        
+    </div>
+    <div id="dropmsg_trj" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Number of players&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pNbrJTrj">
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4" selected="">4</option>
+                </select>
+            
+            
+        
+    </div>
+    <div id="dropmsg_dlo" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Number of players&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pNbrJDlo">
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4" selected="">4</option>
+                </select>
+            
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Variant&nbsp;
+                <td style="text-align:left;"><select class="clInput" id="pDloFestivalSeason" name="pDloFestivalSeason">
+                    <option value="0" selected="">Base game</option>
+                    <option value="1">5 seasons</option>
+                    <option value="2">Festival</option>
+                </select>
+            
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Random dungeon setup&nbsp;
+                <td style="text-align:left;"><input type="checkbox" id="cbDloSetupDungeons&quot;"
+                                                    name="cbDloSetupDungeons" value="1">
+            
+            
+        
+    </div>
+    <div id="dropmsg_mlc" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Number of players&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pNbrJMlc">
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4" selected="">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                </select>
+            
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Asymetrical setup&nbsp;
+                <td style="text-align:left;"><input type="checkbox" id="cbMlcExpertStart&quot;" name="cbMlcExpertStart"
+                                                    value="1">
+            
+            
+        
+    </div>
+    <div id="dropmsg_alc" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Number of players&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pNbrJAlc">
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4" selected="">4</option>
+                </select>
+            
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Variant&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pAlcVariante" id="pAlcVariante">
+                    <option value="0">Apprentice</option>
+                    <option value="1" selected="">Master</option>
+                </select>
+            
+            <tr class="clAlcCustom" style="display: none;">
+                <td class="clEtiquette" style="text-align:right;">Setup&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pAlcVarianteSetup">
+                    <option value="0">Apprentice</option>
+                    <option value="1" selected="">Master</option>
+                </select>
+            
+            <tr class="clAlcCustom" style="display: none;">
+                <td class="clEtiquette" style="text-align:right;">Conference&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pAlcVarianteConference">
+                    <option value="0">Apprentice</option>
+                    <option value="1" selected="">Master</option>
+                </select>
+            
+            <tr class="clAlcCustom" style="display: none;">
+                <td class="clEtiquette" style="text-align:right;">Debunk&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pAlcVarianteDebunk">
+                    <option value="0">Apprentice</option>
+                    <option value="1" selected="">Master</option>
+                </select>
+            
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Automatic deduction&nbsp;
+                <td style="text-align:left;"><input type="checkbox" id="pAlcAuto" name="pAlcAuto" value="1">
+            
+            
+        
+    </div>
+    <div id="dropmsg_kan" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Number of players&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pNbrJKan">
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4" selected="">4</option>
+                </select>
+            
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Variant&nbsp;
+                <td style="text-align:left;"><select class="clInput" id="pKanSandra" name="pKanSandra">
+                    <option value="0">Nice Sandra</option>
+                    <option value="1" selected="">Mean Sandra</option>
+                    <option value="2">Sandra of Scrutiny</option>
+                </select>
+            
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Player Board&nbsp;
+                <td style="text-align:left;"><select class="clInput" id="pKanBoard" name="pKanBoard">
+                    <option value="0" selected="selected">Standard Board</option>
+                    <option value="1">Expert Board</option>
+                </select>
+            
+            
+        
+    </div>
+    <div id="dropmsg_rlm" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Dirt expansion&nbsp;
+                <td style="text-align:left;"><input type="checkbox" id="pRlmDirt" name="pRlmDirt" value="1">&nbsp;
+            
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Shakedown variant&nbsp;
+                <td style="text-align:left;"><input type="checkbox" id="pRlmShakedown" name="pRlmShakedown" value="1">&nbsp;
+                
+            
+            <tr class="clRlmPointage" style="display: none;">
+                <td class="clEtiquette" style="text-align:right;">Checkpoint between Specials&nbsp;
+                <td style="text-align:left;"><input type="checkbox" id="pRlmPointage" name="pRlmPointage" value="1">&nbsp;
+                
+            
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Time trial&nbsp;
+                <td style="text-align:left;"><input type="checkbox" id="pRlmCLM" name="pRlmCLM" value="1">&nbsp;
+            
+            <tr class="clRlmLeader" style="display: none;">
+                <td class="clEtiquette" style="text-align:right;">Time trial mode&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pRlmLeader">
+                    <option value="0">Independant races - no leader</option>
+                    <option value="1" selected="selected">Normal mode</option>
+                    <option value="2">Independant races - all leaders</option>
+                </select>
+            
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Custom Roadbook&nbsp;
+                <td style="text-align:left;"><input type="checkbox" id="pRlmCustom" name="pRlmCustom" value="1">&nbsp;
+                
+            
+            <tr class="clRlmRoadbook" style="display: none;">
+                <td class="clEtiquette" style="text-align:right;">Roadbook (<a href="jeux/rlm/board/index.php">Roadbook
+                    editor</a>)&nbsp;
+                
+                <td style="text-align:left;"><textarea rows="3" cols="60" name="pRlmRoadbook" id="pRlmRoadbook">* C3-C8 / J5-J6 / L7-L4 / X
+* J1-J4 / V3-V2 / L13-L12 / C13-C18 / X
+* J19-J10 / C5-C4 / V5-V0 / L16-L15 / V1-V4 / J11-J14 / X / ROTATE 180</textarea>
+            
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Number of players&nbsp;
+                <td style="text-align:left;"><select class="clInput" id="pNbrJRlm" name="pNbrJRlm">
+                    <option value="1">solo</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option selected="">4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                </select>
+            
+            <tr id="pRlmDirtAlert" style="display:none;">
+                <td>
+                <td class="clEtiquette" style="text-align:center;color:lightgreen;">Please note that you are using a
+                    Dirt board without enabling "Dirt expansion".
+                
+            
+            
+        
+    </div>
+    <div id="dropmsg_cdb" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Number of players&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pNbrJCdb">
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4" selected="">4</option>
+                </select>
+            
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Variant&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pCdbVariante">
+                    <option value="0" selected="">Classic board</option>
+                    <option value="1">Double-sided random boards</option>
+                    <option value="2">2 random boards for each player</option>
+                    <option value="3">single random board</option>
+                    <option value="4">Monasteries expansion</option>
+                </select>
+            
+            
+        
+    </div>
+    <div id="dropmsg_yok" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Variant&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pYokVariante">
+                    <option value="0" selected="">3x4</option>
+                    <option value="1">5x6</option>
+                </select>
+            
+            
+        
+    </div>
+    <div id="dropmsg_khi" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Variant&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pKhiVariante">
+                    <option value="0" selected="">Classic</option>
+                    <option value="1">Expert</option>
+                </select>
+            
+            
+        
+    </div>
+    <div id="dropmsg_myr" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Number of players&nbsp;
+                <td style="text-align:left;"><select class="clInput" id="pNbrJMyr" name="pNbrJMyr">
+                    <option value="2" selected="">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            
+            
+        
+    </div>
+    <div id="dropmsg_ptz" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Number of players&nbsp;
+                <td style="text-align:left;"><select class="clInput" id="pNbrJPtz" name="pNbrJPtz">
+                    <option value="2" selected="">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            
+            
+        
+    </div>
+    <div id="dropmsg_gko" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Number of players&nbsp;
+                <td style="text-align:left;"><select class="clInput" id="pNbrJGko" name="pNbrJGko">
+                    <option value="2" selected="">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            
+            <tr>
+                <td class="clEtiquette" style="text-align:right">Characters&nbsp;
+                <td style="text-align:left;"><select class="clInput" id="pVarGko" name="pVarGko">
+                    <option value="0">Random</option>
+                    <option value="1" selected="selected">Draft</option>
+                </select>
+            
+            <tr>
+                <td class="clEtiquette" style="text-align:right">Natural topology&nbsp;
+                <td style="text-align:left;"><input type="checkbox" name="nattopgko" id="nattopgko" value="true">
+            
+            
+        
+    </div>
+    <div id="dropmsg_jar" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Language&nbsp;
+                <td style="text-align:left;">
+                    <input type="radio" name="pLangJar" value="de"><img src="./img/de_flag.gif" alt="de" title="de">&nbsp;
+                    <input type="radio" name="pLangJar" value="en" checked="checked"><img src="./img/en_flag.gif"
+                                                                                          alt="en" title="en">&nbsp;
+                    <input type="radio" name="pLangJar" value="fr"><img src="./img/fr_flag.gif" alt="fr" title="fr">&nbsp;
+                
+            
+            <tr>
+                <td class="clEtiquette" style="text-align:right">Variant&nbsp;
+                <td style="text-align:left;"><select class="clInput" id="pVarJar" name="pVarJar">
+                    <option value="0">without Jarnac</option>
+                    <option value="1" selected="selected">Standard</option>
+                </select>
+            
+            
+        
+    </div>
+    <div id="dropmsg_ccy" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Decentralization variant&nbsp;
+                <td style="text-align:left;"><input type="checkbox" id="pCcyDecentr" value="true">
+            
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Parking meters variant&nbsp;
+                <td style="text-align:left;"><input type="checkbox" id="pCcyParcm" value="true">
+            
+            
+        
+    </div>
+    <div id="dropmsg_ttb" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Number of players&nbsp;
+                <td style="text-align:left;"><select class="clInput" id="pNbrJTtb" name="pNbrJTtb">
+                    <option value="2" selected="">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                </select>
+            
+            <tr>
+                <td class="clEtiquette" style="text-align:right">Variant&nbsp;
+                <td style="text-align:left;"><select class="clInput" id="pVarTtb" name="pVarTtb">
+                    <option value="0" selected="selected">Standard</option>
+                    <option value="1">Advanced</option>
+                </select>
+            
+            
+        
+    </div>
+    <div id="dropmsg_pal" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Number of players&nbsp;
+                <td style="text-align:left;width:75%"><select class="clInput" id="pNbrJPal" name="pNbrJPal">
+                    <option value="1">solo</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4" selected="">4</option>
+                    <option value="5">5</option>
+                </select>
+                    <div id="soloPal" style="display:none;float:right;margin-right:200px"><span class="clEtiquette">Level</span>&nbsp;<select
+                            class="clInput" id="pDiffPal" name="pDiffPal">
+                        <option value="1" selected="selected">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select></div>
+                
+            
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Variant&nbsp;
+                <td style="text-align:left;"><select class="clInput" id="pPalVariante" name="pPalVariante">
+                    <option value="0" selected="">Classic</option>
+                    <option value="1">Expert</option>
+                </select>
+            
+            
+        
+    </div>
+    <div id="dropmsg_brx" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Number of players&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pNbrJBrx">
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4" selected="selected">4</option>
+                    <option value="5">5</option>
+                </select>
+            
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Variant&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pBrxVariante">
+                    <option value="0" selected="">Standard</option>
+                    <option value="1">Expert</option>
+                </select>
+            
+            
+        
+    </div>
+    <div id="dropmsg_deu" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Number of players&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pNbrJDeu">
+                    <option value="2">2</option>
+                    <option value="3" selected="selected">3</option>
+                    <option value="4">4</option>
+                </select>
+            
+            
+        
+    </div>
+    <div id="dropmsg_ndg" class="clDetailJeu" style="display: none;">
+        <table cellpadding="1" cellspacing="1" border="0">
+            <tbody>
+            <tr>
+                <td class="clEtiquette" style="text-align:right;">Number of players&nbsp;
+                <td style="text-align:left;"><select class="clInput" name="pNbrJNdg" id="pNbrJNdg">
+                    <option value="1">1 (official solo mode)</option>
+                    <option value="2" selected="selected">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            
+            
+        
+    </div>
+    <div id="btnMulti" class="clValidBtn"><input type="button" value="ADD" class="btn" onclick="creerPartie()"></div>
+    <div id="btnSolo" class="clValidBtn" style="display: none;"><input type="button" value="ADD" class="btn"
+                                                                       onclick="creerSolo()"></div>
+    <div id="btnConfirmLg" class="clValidBtn" style="display: none;"><input type="button" value="ADD" class="btn"
+                                                                            onclick="confirmLg()"></div>
+</form>

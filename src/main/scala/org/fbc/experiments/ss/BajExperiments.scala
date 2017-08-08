@@ -32,8 +32,8 @@ object BajExperiments extends App with DebugUtils {
     logResult(result)
   }
 
-  def latestExperiment(browser: Browser) = {
-    // val result = GameActions.makeCaptureOrStackMove(browser, gameId, Move(CAPTURE, Some("A2"), Some("A3")))
+
+  def makeMove(browser: Browser) = {
     val result = GameActions.makeMove(browser, gameId,
       FullMove(
         Move(CAPTURE, Some("E7"), Some("E6")),
@@ -43,6 +43,12 @@ object BajExperiments extends App with DebugUtils {
     logResult(result)
   }
 
+  def latestExperiment(browser: Browser) = {
+    // doesn't work:
+    GameActions.startNewGame(browser, GameInvitation("test5", None, None, Some("testuser"), SYMMETRICAL))
+  }
+
   WebFetcher.loginPost(browser, login, password)
-  latestExperiment(browser)
+  obtainGames(browser)
+
 }
