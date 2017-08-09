@@ -2,6 +2,8 @@ package org.fbc.experiments.ss.actuators
 
 import com.typesafe.scalalogging.StrictLogging
 import net.ruippeixotog.scalascraper.browser.Browser
+import net.ruippeixotog.scalascraper.dsl.DSL._
+import net.ruippeixotog.scalascraper.scraper.ContentExtractors.{text => stext}
 import org.fbc.experiments.ss.DebugUtils
 import org.fbc.experiments.ss.extractors.GameDetailsExtractor
 import org.fbc.experiments.ss.model._
@@ -15,6 +17,15 @@ object GameActions extends StrictLogging with DebugUtils {
   private val FROM_ACTION = "choisirSource"
   private val TO_ACTION   = "destination"
   private val PASS_ACTION = "passer"
+
+
+  private def extractInviteId(text: String): Either[String, String] = {
+    val regexPattern = """game (\d+).*""".r
+    text match {
+      case regexPattern(gameId) => Right(gameId)
+      case _ => Left(text)
+    }
+  }
 
   def startNewGame(browser: Browser, invitation: GameInvitation) = {
     logger.info("startNewGame {}", invitation)
@@ -31,7 +42,11 @@ object GameActions extends StrictLogging with DebugUtils {
 
     // BAJ doesn't validate input parameters and answers with "game created" - unless you are not logged in
     // (for example, you could give pTypePlateau=17 and the game gets created, with an empty board)
-    result
+    val gameId = extractInviteId(result >> stext("strong"))
+    gameId match {
+      case Right(gameId) => gameId
+      case Left(msg) => throw new IllegalStateException(msg)
+    }
   }
 
   def joinGame(browser: Browser, login: String, password: String) = ???

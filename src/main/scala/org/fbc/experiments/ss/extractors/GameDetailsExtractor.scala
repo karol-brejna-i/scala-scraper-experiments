@@ -28,9 +28,6 @@ object GameDetailsExtractor extends StrictLogging {
     doc >> "input[name=pIdCoup]" >> attr("value")
   }
 
-  private def getPlayers(element: Element) = {
-  }
-
   private def getGameMetadata(metadataElement : Element) = {
     val gameId = (metadataElement  >> stext("tr:nth-child(1)")).split(" ")(1).substring(1)
     val gameName = (metadataElement  >> stext("tr:nth-child(2)")).stripPrefix("\"").stripSuffix("\"")
