@@ -3,6 +3,7 @@ package org.fbc.experiments.ss
 import java.io.PrintWriter
 
 import com.typesafe.scalalogging.StrictLogging
+import net.ruippeixotog.scalascraper.browser.Browser
 
 trait DebugUtils extends StrictLogging {
 
@@ -18,4 +19,10 @@ trait DebugUtils extends StrictLogging {
       case _ =>
     }
   }
+
+  def showCookies(browser: Browser, uri: String) = {
+    logger.info("show cookies")
+    logger.info(s"cookies: ${browser.cookies(uri)}")
+  }
+
 }

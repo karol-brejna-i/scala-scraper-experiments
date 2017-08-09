@@ -10,7 +10,7 @@ class GameActions
 
 object GameActions extends StrictLogging with DebugUtils {
   private val moveUri = "http://www.boiteajeux.net/jeux/tza/traitement.php?id=%s"
-  private val newGameUri = "http://www.boiteajeux.net/index.php?p=creer"
+  private val newGameUri = "http://www.boiteajeux.net/gestion.php"
 
   private val FROM_ACTION = "choisirSource"
   private val TO_ACTION   = "destination"
@@ -28,6 +28,10 @@ object GameActions extends StrictLogging with DebugUtils {
       "pTypePlateau" -> (if (invitation.setup == SYMMETRICAL) "0" else "1")
     )
     val result = browser.post(newGameUri, form)
+
+    // BAJ doesn't validate input parameters and answers with "game created" - unless you are not logged in
+    // (for example, you could give pTypePlateau=17 and the game gets created, with an empty board)
+    result
   }
 
   def joinGame(browser: Browser, login: String, password: String) = ???

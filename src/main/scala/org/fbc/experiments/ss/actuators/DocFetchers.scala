@@ -11,7 +11,6 @@ object WebFetcher extends StrictLogging {
   private val gameDetailsUri = "http://www.boiteajeux.net/jeux/tza/partie.php?id=%s"
   private val inProgressUri = "http://www.boiteajeux.net/index.php?p=encours"
 
-
   def getGameDetailsDoc(browser: Browser, gameId: String) = {
     logger.info("getGameDetailsDoc")
     browser.get(String.format(gameDetailsUri, gameId))
@@ -25,12 +24,8 @@ object WebFetcher extends StrictLogging {
   def loginPost(browser: Browser, login: String, password: String) = {
     logger.info("login")
     val form = Map("p" -> "", "pAction" -> "login", "username" -> login, "password" -> password)
+    // additional parameter could be: "autologin"->"on"
     browser.post(loginUri, form)
-  }
-
-  def showCookies(browser: Browser) = {
-    logger.info("show cookies")
-    logger.info(s"basic uri: ${browser.cookies(basicUri)}")
   }
 }
 
@@ -47,6 +42,4 @@ object ResourceFetcher extends StrictLogging {
   def getGamesInProgressDoc(browser: Browser, resourceName : String) = getDocFromResource(browser, resourceName)
 
   def loginPost(browser: Browser, login: String, password: String) = {}
-
-  def showCookies(browser: Browser) = {}
 }
