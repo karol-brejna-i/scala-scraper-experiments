@@ -49,7 +49,7 @@ object GameActions extends StrictLogging with DebugUtils {
     }
   }
 
-  def joinGame(browser: Browser, login: String, password: String) = ???
+  def joinGame(browser: Browser, gameId: String) = ???
 
 
   // In every move-making stage there is a form submitted:
@@ -65,7 +65,7 @@ object GameActions extends StrictLogging with DebugUtils {
   // * pass (`passer`)
   // The only "strange" thing here is `pIdCoup` parameter. (It's probably some kind of timestamp or turn "marker".)
   // I am not sure if it is required. For beginning, I'll send it exactly as original BAJ page does
-  def makeMove(browser: Browser, gameId: String, fullMove: FullMove) = {
+  def makeMove(browser: Browser, gameId: String, fullMove: FullMove): String = {
     logger.info("makeMove {}", fullMove)
 
     require(fullMove.firstMove.moveType != PASS, "You cannot PASS on first move")
@@ -78,13 +78,14 @@ object GameActions extends StrictLogging with DebugUtils {
     }
   }
 
-  def makePassMove(browser: Browser, gameId: String) = {
+  def makePassMove(browser: Browser, gameId: String): String = {
     logger.info("makePassMove")
     val mark = GameDetailsExtractor.extractTurnMarker(WebFetcher.getGameDetailsDoc(browser, gameId))
     val doc = postPassAction(browser, mark, gameId)
+    GameDetailsExtractor.extractTurnMarker(doc)
   }
 
-  def makeCaptureOrStackMove(browser: Browser, gameId: String, move: Move) = {
+  def makeCaptureOrStackMove(browser: Browser, gameId: String, move: Move): String = {
     require(move.from.nonEmpty && move.to.nonEmpty, "Capture or stack move needs `from` and `to`")
 
     // get game page and extract pIdCoup
@@ -98,7 +99,7 @@ object GameActions extends StrictLogging with DebugUtils {
 
     // send second half move
     doc = postMoveAction(browser, mark, gameId, TO_ACTION, move.to.get)
-    mark = GameDetailsExtractor.extractTurnMarker(doc)
+    GameDetailsExtractor.extractTurnMarker(doc)
   }
 
   private def postMoveAction(browser: Browser, mark: String, gameId: String, action: String, position: String) = {
